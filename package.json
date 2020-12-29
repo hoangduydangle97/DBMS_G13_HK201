@@ -1,0 +1,25 @@
+{
+  "name": "dbms_g13_hk201",
+  "version": "1.0.0",
+  "description": "This is DBMS project - Group 13 - Term 201",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangduydangle97/DBMS_G13_HK201.git"
+  },
+  "author": "hoangduydangle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoangduydangle97/DBMS_G13_HK201/issues"
+  },
+  "homepage": "https://github.com/hoangduydangle97/DBMS_G13_HK201#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "neo4j-driver": "^4.2.1",
+    "sqlite3": "^5.0.0"
+  }
+}
