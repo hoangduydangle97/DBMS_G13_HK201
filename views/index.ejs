@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <meta charset="utf-8">
+        <title>Mange</title>
+    </header>
+    <body>
+        <h1>Mange</h1>
+    <% rows.forEach(function(row){ %> 
+        <p>AlbumId: <%= row.AlbumId %>, Title: <%= row.Title %>, ArtistId: <%= row.ArtistId %> </p>
+    <% }); %> 
+    </body>
+</html>
