@@ -43,6 +43,32 @@ router.post('/sqlite/ajax/cancel-btn', function(req, res){
     });
 });
 
+router.post('/sqlite/ajax/search', function(req, res){
+    var text = req.body.text;
+    var whereClause = '';
+    if(text != ''){
+        if(isNaN(Number(text))){
+            whereClause = " WHERE (name_student LIKE '%" + text + "%') " 
+            + "OR (name_class LIKE '%" + text + "%')";
+        }
+        else{
+            text = Number(text);
+            if(Number.isInteger(text)){
+                whereClause = " WHERE (id_student LIKE '%" + text + "%') " 
+                + "OR (age_student LIKE '%" + text + "%')";
+            }
+        }
+    }
+    var sql = "SELECT t1.id_student, t1.name_student, t1.age_student, t2.name_class" + 
+    " FROM student t1 LEFT JOIN class t2 ON t1.id_class_student = t2.id_class" + 
+    whereClause + ";";
+    sqlite3.sqlite3QueryRows(dbName, sql, [], function(students){
+        res.render('search_student', {
+            students: students
+        });
+    });
+});
+
 router.post('/sqlite/student/add', function(req, res){
     var values = [
         req.body.id,

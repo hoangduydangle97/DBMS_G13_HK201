@@ -18,6 +18,22 @@ $('#add-btn').click(function(){
     );
 });
 
+$('#search-input').keyup(function(){
+    var text = $(this).val();
+    $.post(
+        'http://localhost:3000/sqlite/ajax/search',
+        {
+            text: text
+        },
+        function(result, status){
+            if(status == 'success'){
+                $('table').html(result);
+            }
+        },
+        'html'
+    );
+});
+
 $('#class-student-input').change(function(){
     $('#hidden-input').val(this.options[this.selectedIndex].text);
 });
