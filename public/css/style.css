@@ -1,1 +1,30 @@
 /*This is a style.css*/
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+}
+
+.container{
+    padding: 15px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.d-none{
+    display: none;
+}

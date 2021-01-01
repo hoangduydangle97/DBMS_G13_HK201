@@ -1,0 +1,26 @@
+<table class="center" id="create-table" style="margin-bottom: 20px;">
+    <tr>
+        <th>Id</th>
+        <th>Name</th> 
+        <th>Age</th>
+        <th>Class</th>
+        <th>Add</th>
+    </tr>
+    <tr>
+        <th><input type="text" id="id-student-input"></th>
+        <th><input type="text" id="name-student-input"></th>
+        <th><input type="text" id="age-student-input"></th>
+        <th>
+            <select id="class-student-input">
+            <% classes.forEach(function(row){ %>
+                <option value="<%= row.id_class %>"><%= row.name_class %></option>
+            <% }); %> 
+            </select>
+        </th>
+        <th>
+            <button type="button" class="pointer" onclick="addStudent()">
+                &plus;
+            </button>
+        </th>
+    </tr>
+</table>

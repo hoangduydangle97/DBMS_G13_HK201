@@ -1,0 +1,16 @@
+<tr id="<%= row.id_student %>">
+    <th><%= row.id_student %></th>
+    <th><%= row.name_student %></th> 
+    <th><%= row.age_student %></th>
+    <th><%= row.name_class %></th>
+    <th>
+        <button type="button" class="pointer" onclick="updateBtn('<%= row.id_student %>')">
+            &#9998;
+        </button>
+    </th>
+    <th>
+        <button type="button" class="pointer" onclick="delStudent('id_student', '<%= row.id_student %>')">
+            &times;
+        </button>
+    </th>
+</tr>

@@ -2,12 +2,53 @@
 <html>
     <header>
         <meta charset="utf-8">
-        <title>Mange</title>
+        <title>Mange School</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     </header>
     <body>
-        <h1>Mange</h1>
-    <% rows.forEach(function(row){ %> 
-        <p>AlbumId: <%= row.AlbumId %>, Title: <%= row.Title %>, ArtistId: <%= row.ArtistId %> </p>
-    <% }); %> 
+        <div class="container text-center">
+            <h1>Mange School</h1>
+        </div>
+        <div class="container">
+            <caption>
+                <h2 class="text-center">Student</h2>
+                <h4 class="text-center">
+                    <button type="button" class="pointer" id="add-btn">
+                        + Add
+                    </button>
+                </h4>
+            </caption>
+            <table class="center">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th> 
+                  <th>Age</th>
+                  <th>Class</th>
+                  <th>Update</th>
+                  <th id="delete-title">Delete</th>
+                </tr>
+            <% students.forEach(function(row){ %> 
+                <tr id="<%= row.id_student %>">
+                    <th><%= row.id_student %></th>
+                    <th><%= row.name_student %></th> 
+                    <th><%= row.age_student %></th>
+                    <th><%= row.name_class %></th>
+                    <th>
+                        <button type="button" class="pointer update-btn" onclick="updateBtn('<%= row.id_student %>')">
+                            &#9998;
+                        </button>
+                    </th>
+                    <th>
+                        <button type="button" class="pointer delete-btn" onclick="delStudent('id_student', '<%= row.id_student %>')">
+                            &times;
+                        </button>
+                    </th>
+                </tr>
+            <% }); %> 
+            </table>
+        </div>
+    <script src="/public/js/jquery-3.5.1.min.js"></script>
+    <script src="/public/js/script.js"></script>
     </body>
 </html>

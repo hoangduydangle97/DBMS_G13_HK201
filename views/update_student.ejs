@@ -1,0 +1,22 @@
+<tr id="<%= student.id_student %>">
+    <th><input type="text" id="id-student-input" value="<%= student.id_student %>"></th>
+    <th><input type="text" id="name-student-input" value="<%= student.name_student %>"></th> 
+    <th><input type="text" id="age-student-input" value="<%= student.age_student %>"></th>
+    <th>
+        <select id="class-student-input">
+        <% classes.forEach(function(row){%>
+            <option value="<%= row.id_class %>" <%= student.name_class == row.name_class ? 'selected' : '' %>><%= row.name_class %></option>
+        <% }); %> 
+        </select>
+    </th>
+    <th>
+        <button type="button" class="pointer" onclick="updateStudent('<%= student.id_student %>')">
+            &#10004;
+        </button>
+    </th>
+    <th>
+        <button type="button" class="pointer" onclick="cancelBtn('<%= student.id_student %>')">
+            &times;
+        </button>
+    </th>
+</tr>
