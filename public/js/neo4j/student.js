@@ -1,6 +1,12 @@
-// This is a script.js for neo4j
+// This is a script.js for Neo4j
 $('#home-btn').click(function(){
     location.href = 'http://localhost:3000/';
+});
+$('#class-btn').click(function(){
+    location.href = 'http://localhost:3000/neo4j/school/class';
+});
+$('#teacher-btn').click(function(){
+    location.href = 'http://localhost:3000/neo4j/school/teacher';
 });
 
 $('#add-btn').click(function(){
@@ -16,7 +22,7 @@ $('#add-btn').click(function(){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/neo4j/error';
+                    location.href = 'http://localhost:3000/neo4j/school/student/error';
                 }
                 else{
                     $('table').before(result);
@@ -37,7 +43,7 @@ $('#search-input').keyup(function(){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/neo4j/error';
+                    location.href = 'http://localhost:3000/neo4j/school/student/error';
                 }
                 else{
                     $('table').html(result);
@@ -70,7 +76,7 @@ function updateBtn(id){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/neo4j/error';
+                    location.href = 'http://localhost:3000/neo4j/school/student/error';
                 }
                 else{
                     $('#' + id).after(result);
@@ -91,7 +97,7 @@ function cancelBtn(id){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/neo4j/error';
+                    location.href = 'http://localhost:3000/neo4j/school/student/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -129,7 +135,7 @@ function addStudent(){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/neo4j/error';
+                    location.href = 'http://localhost:3000/neo4j/school/student/error';
                 }
                 else{
                     $('#create-table').remove();
@@ -159,7 +165,7 @@ function updateStudent(id){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/neo4j/error';
+                    location.href = 'http://localhost:3000/neo4j/school/student/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -193,7 +199,7 @@ function delStudent(field, id){
                     $('#' + id).remove();
                 }
                 else{
-                    location.href = 'http://localhost:3000/neo4j/error';
+                    location.href = 'http://localhost:3000/neo4j/school/student/error';
                 }
             }
         },

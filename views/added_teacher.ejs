@@ -1,0 +1,15 @@
+<tr id="<%= teacher.id_teacher %>">
+    <th><%= teacher.id_teacher %></th>
+    <th><%= teacher.name_teacher %></th> 
+    <th><%= teacher.age_teacher %></th>
+    <th>
+        <button type="button" class="pointer" onclick="updateBtn('<%= teacher.id_teacher %>')">
+            &#9998;
+        </button>
+    </th>
+    <th>
+        <button type="button" class="pointer" onclick="delTeacher('id_teacher', '<%= teacher.id_teacher %>')">
+            &times;
+        </button>
+    </th>
+</tr>

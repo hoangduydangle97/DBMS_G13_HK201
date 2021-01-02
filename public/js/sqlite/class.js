@@ -3,13 +3,10 @@ $('#home-btn').click(function(){
     location.href = 'http://localhost:3000/';
 });
 $('#student-btn').click(function(){
-    location.href = 'http://localhost:3000/neo4j/school/student';
+    location.href = 'http://localhost:3000/sqlite/school/student';
 });
 $('#teacher-btn').click(function(){
-    location.href = 'http://localhost:3000/neo4j/school/teacher';
-});
-$('#teaching-btn').click(function(){
-    location.href = 'http://localhost:3000/neo4j/school/teaching';
+    location.href = 'http://localhost:3000/sqlite/school/teacher';
 });
 
 $('#add-btn').click(function(){
@@ -25,7 +22,7 @@ $('#add-btn').click(function(){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/sqlite/school/class/error';
                 }
                 else{
                     $('table').before(result);
@@ -46,7 +43,7 @@ $('#search-input').keyup(function(){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/sqlite/school/class/error';
                 }
                 else{
                     $('table').html(result);
@@ -79,7 +76,7 @@ function updateBtn(id){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/sqlite/school/class/error';
                 }
                 else{
                     $('#' + id).after(result);
@@ -100,7 +97,7 @@ function cancelBtn(id){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/sqlite/school/class/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -134,7 +131,7 @@ function addClass(){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/sqlite/school/class/error';
                 }
                 else{
                     $('#create-table').remove();
@@ -160,7 +157,7 @@ function updateClass(id){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/sqlite/school/class/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -194,7 +191,7 @@ function delClass(field, id){
                     $('#' + id).remove();
                 }
                 else{
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/sqlite/school/class/error';
                 }
             }
         },

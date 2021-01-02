@@ -1,12 +1,12 @@
-// This is a script.js for SQLite
+// This is a script.js for Neo4j
 $('#home-btn').click(function(){
     location.href = 'http://localhost:3000/';
 });
-$('#class-btn').click(function(){
-    location.href = 'http://localhost:3000/sqlite/school/class';
+$('#student-btn').click(function(){
+    location.href = 'http://localhost:3000/neo4j/school/student';
 });
 $('#teacher-btn').click(function(){
-    location.href = 'http://localhost:3000/sqlite/school/teacher';
+    location.href = 'http://localhost:3000/neo4j/school/teacher';
 });
 
 $('#add-btn').click(function(){
@@ -17,12 +17,12 @@ $('#add-btn').click(function(){
         $('#cancel-btn').remove();
     });
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/add-btn',
+        'http://localhost:3000/neo4j/ajax/class/add-btn',
         {},
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/neo4j/school/class/error';
                 }
                 else{
                     $('table').before(result);
@@ -36,14 +36,14 @@ $('#add-btn').click(function(){
 $('#search-input').keyup(function(){
     var text = $(this).val();
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/search',
+        'http://localhost:3000/neo4j/ajax/class/search',
         {
             text: text
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/neo4j/school/class/error';
                 }
                 else{
                     $('table').html(result);
@@ -69,14 +69,14 @@ function updateBtn(id){
     });
     $('#delete-title').html('Cancel');
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/update-btn',
+        'http://localhost:3000/neo4j/ajax/class/update-btn',
         {
             id: id
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/neo4j/school/class/error';
                 }
                 else{
                     $('#' + id).after(result);
@@ -90,14 +90,14 @@ function updateBtn(id){
 
 function cancelBtn(id){
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/cancel-btn',
+        'http://localhost:3000/neo4j/ajax/class/cancel-btn',
         {
             id: id
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/neo4j/school/class/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -119,23 +119,19 @@ function cancelBtn(id){
 }
 
 
-function addStudent(){
-    var id_student = $('#id-student-input').val();
-    var name_student = $('#name-student-input').val();
-    var age_student = $('#age-student-input').val();
-    var id_class = $('#class-student-input').val();
+function addClass(){
+    var id_class = $('#id-class-input').val();
+    var name_class = $('#name-class-input').val();
     $.post(
-        'http://localhost:3000/sqlite/student/add',
+        'http://localhost:3000/neo4j/class/add',
         {
-            id: id_student,
-            name: name_student,
-            age: age_student,
-            class: id_class
+            id: id_class,
+            name: name_class
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/neo4j/school/class/error';
                 }
                 else{
                     $('#create-table').remove();
@@ -148,24 +144,20 @@ function addStudent(){
     );
 }
 
-function updateStudent(id){
-    var id_student = $('#id-student-input').val();
-    var name_student = $('#name-student-input').val();
-    var age_student = $('#age-student-input').val();
-    var id_class = $('#class-student-input').val();
+function updateClass(id){
+    var id_class = $('#id-class-input').val();
+    var name_class = $('#name-class-input').val();
     $.post(
-        'http://localhost:3000/sqlite/student/update',
+        'http://localhost:3000/neo4j/class/update',
         {
             old_id: id,
-            new_id: id_student,
-            name: name_student,
-            age: age_student,
-            class: id_class
+            new_id: id_class,
+            name: name_class
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/neo4j/school/class/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -186,9 +178,9 @@ function updateStudent(id){
     );
 }
 
-function delStudent(field, id){
+function delClass(field, id){
     $.post(
-        'http://localhost:3000/sqlite/student/delete',
+        'http://localhost:3000/neo4j/class/delete',
         {
             field: field,
             id: id
@@ -199,7 +191,7 @@ function delStudent(field, id){
                     $('#' + id).remove();
                 }
                 else{
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/neo4j/school/class/error';
                 }
             }
         },

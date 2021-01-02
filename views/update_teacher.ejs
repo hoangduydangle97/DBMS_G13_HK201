@@ -1,0 +1,15 @@
+<tr id="<%= teacher.id_teacher %>">
+    <th><input type="text" id="id-teacher-input" value="<%= teacher.id_teacher %>"></th>
+    <th><input type="text" id="name-teacher-input" value="<%= teacher.name_teacher %>"></th> 
+    <th><input type="text" id="age-teacher-input" value="<%= teacher.age_teacher %>"></th>
+    <th>
+        <button type="button" class="pointer" onclick="updateTeacher('<%= teacher.id_teacher %>')">
+            &#10004;
+        </button>
+    </th>
+    <th>
+        <button type="button" class="pointer" onclick="cancelBtn('<%= teacher.id_teacher %>')">
+            &times;
+        </button>
+    </th>
+</tr>

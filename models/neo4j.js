@@ -22,7 +22,6 @@ exports.neo4jQuery = function(cypher, params, callback){
             });
             resultReturn.push(obj);
         });
-        //console.log(resultReturn);
         callback(resultReturn);
     })
     .catch(function(error){

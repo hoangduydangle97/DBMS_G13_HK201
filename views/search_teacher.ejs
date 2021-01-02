@@ -1,0 +1,30 @@
+<tr>
+    <th>Id</th>
+    <th>Name</th> 
+    <th>Age</th>
+    <th>Update</th>
+    <th id="delete-title">Delete</th>
+</tr>
+<% if(teachers.length != 0){
+    teachers.forEach(function(row){ %> 
+<tr id="<%= row.id_teacher %>">
+    <th><%= row.id_teacher %></th>
+    <th><%= row.name_teacher %></th> 
+    <th><%= row.age_teacher %></th>
+    <th>
+        <button type="button" class="pointer update-btn" onclick="updateBtn('<%= row.id_teacher %>')">
+            &#9998;
+        </button>
+    </th>
+    <th>
+        <button type="button" class="pointer delete-btn" onclick="delTeacher('id_teacher', '<%= row.id_teacher %>')">
+            &times;
+        </button>
+    </th>
+</tr>
+<% }); }
+else{ %> 
+<tr>
+    <th colspan="5">Not found!</th>
+</tr>
+<% } %>

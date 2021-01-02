@@ -9,7 +9,7 @@
     <body>
         <div class="container text-center">
             <h1>Manage School</h1>
-            <h2>SQLite</h2>
+            <h2>Neo4j</h2>
         </div>
         <div class="container text-center">
             <button type="button" class="pointer" id="student-btn" style="font-size: large;">
@@ -26,13 +26,13 @@
         <script>
             $(document).ready(function(){
                 $('#student-btn').click(function(){
-                    location.href = 'http://localhost:3000/sqlite/school/student';
+                    location.href = 'http://localhost:3000/neo4j/school/student';
                 });
                 $('#class-btn').click(function(){
-                    location.href = 'http://localhost:3000/sqlite/school/class';
+                    location.href = 'http://localhost:3000/neo4j/school/class';
                 });
                 $('#teacher-btn').click(function(){
-                    location.href = 'http://localhost:3000/sqlite/school/teacher';
+                    location.href = 'http://localhost:3000/neo4j/school/teacher';
                 });
             });
         </script>

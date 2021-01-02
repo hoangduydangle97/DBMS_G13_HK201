@@ -5,8 +5,8 @@ $('#home-btn').click(function(){
 $('#class-btn').click(function(){
     location.href = 'http://localhost:3000/sqlite/school/class';
 });
-$('#teacher-btn').click(function(){
-    location.href = 'http://localhost:3000/sqlite/school/teacher';
+$('#student-btn').click(function(){
+    location.href = 'http://localhost:3000/sqlite/school/student';
 });
 
 $('#add-btn').click(function(){
@@ -17,12 +17,12 @@ $('#add-btn').click(function(){
         $('#cancel-btn').remove();
     });
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/add-btn',
+        'http://localhost:3000/sqlite/ajax/teacher/add-btn',
         {},
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/sqlite/school/teacher/error';
                 }
                 else{
                     $('table').before(result);
@@ -36,14 +36,14 @@ $('#add-btn').click(function(){
 $('#search-input').keyup(function(){
     var text = $(this).val();
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/search',
+        'http://localhost:3000/sqlite/ajax/teacher/search',
         {
             text: text
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/sqlite/school/teacher/error';
                 }
                 else{
                     $('table').html(result);
@@ -54,7 +54,7 @@ $('#search-input').keyup(function(){
     );
 });
 
-$('#class-student-input').change(function(){
+$('#class-teacher-input').change(function(){
     $('#hidden-input').val(this.options[this.selectedIndex].text);
 });
 
@@ -69,14 +69,14 @@ function updateBtn(id){
     });
     $('#delete-title').html('Cancel');
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/update-btn',
+        'http://localhost:3000/sqlite/ajax/teacher/update-btn',
         {
             id: id
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/sqlite/school/teacher/error';
                 }
                 else{
                     $('#' + id).after(result);
@@ -90,14 +90,14 @@ function updateBtn(id){
 
 function cancelBtn(id){
     $.post(
-        'http://localhost:3000/sqlite/ajax/student/cancel-btn',
+        'http://localhost:3000/sqlite/ajax/teacher/cancel-btn',
         {
             id: id
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/sqlite/school/teacher/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -119,23 +119,21 @@ function cancelBtn(id){
 }
 
 
-function addStudent(){
-    var id_student = $('#id-student-input').val();
-    var name_student = $('#name-student-input').val();
-    var age_student = $('#age-student-input').val();
-    var id_class = $('#class-student-input').val();
+function addTeacher(){
+    var id_teacher = $('#id-teacher-input').val();
+    var name_teacher = $('#name-teacher-input').val();
+    var age_teacher = $('#age-teacher-input').val();
     $.post(
-        'http://localhost:3000/sqlite/student/add',
+        'http://localhost:3000/sqlite/teacher/add',
         {
-            id: id_student,
-            name: name_student,
-            age: age_student,
-            class: id_class
+            id: id_teacher,
+            name: name_teacher,
+            age: age_teacher
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/sqlite/school/teacher/error';
                 }
                 else{
                     $('#create-table').remove();
@@ -148,24 +146,22 @@ function addStudent(){
     );
 }
 
-function updateStudent(id){
-    var id_student = $('#id-student-input').val();
-    var name_student = $('#name-student-input').val();
-    var age_student = $('#age-student-input').val();
-    var id_class = $('#class-student-input').val();
+function updateTeacher(id){
+    var id_teacher = $('#id-teacher-input').val();
+    var name_teacher = $('#name-teacher-input').val();
+    var age_teacher = $('#age-teacher-input').val();
     $.post(
-        'http://localhost:3000/sqlite/student/update',
+        'http://localhost:3000/sqlite/teacher/update',
         {
             old_id: id,
-            new_id: id_student,
-            name: name_student,
-            age: age_student,
-            class: id_class
+            new_id: id_teacher,
+            name: name_teacher,
+            age: age_teacher
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/sqlite/school/teacher/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -186,9 +182,9 @@ function updateStudent(id){
     );
 }
 
-function delStudent(field, id){
+function delTeacher(field, id){
     $.post(
-        'http://localhost:3000/sqlite/student/delete',
+        'http://localhost:3000/sqlite/teacher/delete',
         {
             field: field,
             id: id
@@ -199,7 +195,7 @@ function delStudent(field, id){
                     $('#' + id).remove();
                 }
                 else{
-                    location.href = 'http://localhost:3000/sqlite/school/student/error';
+                    location.href = 'http://localhost:3000/sqlite/school/teacher/error';
                 }
             }
         },
