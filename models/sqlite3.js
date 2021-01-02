@@ -25,6 +25,7 @@ exports.sqlite3QueryRows = function(dbName, sql, params, callback){
         sqlite3Disconnect();
         if (err) {
             console.error(err.message);
+            callback(false);
         }
         else{
             callback(rows);
@@ -38,6 +39,7 @@ exports.sqlite3QueryRow = function(dbName, sql, params, callback){
         sqlite3Disconnect();
         if (err) {
             console.error(err.message);
+            callback(false);
         }
         else{
             callback(row);
@@ -59,9 +61,10 @@ exports.sqlite3Create = function(dbName, table, values, callback){
         sqlite3Disconnect();
         if (err) {
             console.error(err.message);
+            callback(false);
         }
         else{
-            callback();
+            callback(true);
         } 
     });
 }
@@ -77,6 +80,7 @@ exports.sqlite3Update = function(dbName, table, values, callback){
         sqlite3Disconnect();
         if (err) {
             console.error(err.message);
+            callback(false);
         }
         else{
             callback();
@@ -93,9 +97,10 @@ exports.sqlite3Delete = function(dbName, table, value, callback){
         sqlite3Disconnect();
         if (err) {
             console.error(err.message);
+            callback(false);
         }
         else{
-            callback();
+            callback(true);
         } 
     });
 }

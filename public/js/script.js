@@ -11,7 +11,12 @@ $('#add-btn').click(function(){
         {},
         function(result, status){
             if(status == 'success'){
-                $('table').before(result);
+                if(result == 'error'){
+                    location.href = 'http://localhost:3000/sqlite/error';
+                }
+                else{
+                    $('table').before(result);
+                }
             }
         },
         'html'
@@ -27,7 +32,12 @@ $('#search-input').keyup(function(){
         },
         function(result, status){
             if(status == 'success'){
-                $('table').html(result);
+                if(result == 'error'){
+                    location.href = 'http://localhost:3000/sqlite/error';
+                }
+                else{
+                    $('table').html(result);
+                }
             }
         },
         'html'
@@ -40,6 +50,7 @@ $('#class-student-input').change(function(){
 
 function updateBtn(id){
     $('#add-btn').attr('disabled', 'true');
+    $('#search-input').attr('disabled', 'true');
     $('.update-btn').each(function(index, element){
         $(element).attr('disabled', 'true');
     });
@@ -54,8 +65,13 @@ function updateBtn(id){
         },
         function(result, status){
             if(status == 'success'){
-                $('#' + id).after(result);
-                $('#' + id).remove();
+                if(result == 'error'){
+                    location.href = 'http://localhost:3000/sqlite/error';
+                }
+                else{
+                    $('#' + id).after(result);
+                    $('#' + id).remove();
+                }
             }
         },
         'html'
@@ -70,16 +86,22 @@ function cancelBtn(id){
         },
         function(result, status){
             if(status == 'success'){
-                $('#add-btn').removeAttr('disabled');
-            $('.update-btn').each(function(index, element){
-                $(element).removeAttr('disabled');
-            });
-            $('.delete-btn').each(function(index, element){
-                $(element).removeAttr('disabled');
-            });
-            $('#delete-title').html('Delete');
-                $('#' + id).after(result);
-                $('#' + id).remove();
+                if(result == 'error'){
+                    location.href = 'http://localhost:3000/sqlite/error';
+                }
+                else{
+                    $('#add-btn').removeAttr('disabled');
+                    $('#search-input').removeAttr('disabled');
+                    $('.update-btn').each(function(index, element){
+                        $(element).removeAttr('disabled');
+                    });
+                    $('.delete-btn').each(function(index, element){
+                        $(element).removeAttr('disabled');
+                    });
+                    $('#delete-title').html('Delete');
+                    $('#' + id).after(result);
+                    $('#' + id).remove();
+                }
             }
         },
         'html'
@@ -102,9 +124,14 @@ function addStudent(){
         },
         function(result, status){
             if(status == 'success'){
-                $('#create-table').remove();
-                $('#cancel-btn').remove();
-                $('tr').last().after(result);                
+                if(result == 'error'){
+                    location.href = 'http://localhost:3000/sqlite/error';
+                }
+                else{
+                    $('#create-table').remove();
+                    $('#cancel-btn').remove();
+                    $('tr').last().after(result);
+                }                
             }
         },
         'html'
@@ -127,15 +154,19 @@ function updateStudent(id){
         },
         function(result, status){
             if(status == 'success'){
-                if(status == 'success'){
+                if(result == 'error'){
+                    location.href = 'http://localhost:3000/sqlite/error';
+                }
+                else{
                     $('#add-btn').removeAttr('disabled');
-                $('.update-btn').each(function(index, element){
-                    $(element).removeAttr('disabled');
-                });
-                $('.delete-btn').each(function(index, element){
-                    $(element).removeAttr('disabled');
-                });
-                $('#delete-title').html('Delete');
+                    $('#search-input').removeAttr('disabled');
+                    $('.update-btn').each(function(index, element){
+                        $(element).removeAttr('disabled');
+                    });
+                    $('.delete-btn').each(function(index, element){
+                        $(element).removeAttr('disabled');
+                    });
+                    $('#delete-title').html('Delete');
                     $('#' + id).after(result);
                     $('#' + id).remove();
                 }
@@ -156,6 +187,9 @@ function delStudent(field, id){
             if(status == 'success'){
                 if(result.code == 200){
                     $('#' + id).remove();
+                }
+                else{
+                    location.href = 'http://localhost:3000/sqlite/error';
                 }
             }
         },
