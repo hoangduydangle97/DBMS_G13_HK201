@@ -1,4 +1,4 @@
-// This is a script.js
+// This is a script.js for neo4j
 $('#add-btn').click(function(){
     var html = '<button type="button" class="pointer" id="cancel-btn" style="margin-left: 20px;">&times; Cancel</button>';
     $('#add-btn').after(html);
@@ -7,12 +7,12 @@ $('#add-btn').click(function(){
         $('#cancel-btn').remove();
     });
     $.post(
-        'http://localhost:3000/sqlite/ajax/class',
+        'http://localhost:3000/neo4j/ajax/class',
         {},
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/neo4j/error';
                 }
                 else{
                     $('table').before(result);
@@ -26,14 +26,14 @@ $('#add-btn').click(function(){
 $('#search-input').keyup(function(){
     var text = $(this).val();
     $.post(
-        'http://localhost:3000/sqlite/ajax/search',
+        'http://localhost:3000/neo4j/ajax/search',
         {
             text: text
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/neo4j/error';
                 }
                 else{
                     $('table').html(result);
@@ -59,14 +59,14 @@ function updateBtn(id){
     });
     $('#delete-title').html('Cancel');
     $.post(
-        'http://localhost:3000/sqlite/ajax/update-btn',
+        'http://localhost:3000/neo4j/ajax/update-btn',
         {
             id: id
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/neo4j/error';
                 }
                 else{
                     $('#' + id).after(result);
@@ -80,14 +80,14 @@ function updateBtn(id){
 
 function cancelBtn(id){
     $.post(
-        'http://localhost:3000/sqlite/ajax/cancel-btn',
+        'http://localhost:3000/neo4j/ajax/cancel-btn',
         {
             id: id
         },
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/neo4j/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -115,7 +115,7 @@ function addStudent(){
     var age_student = $('#age-student-input').val();
     var id_class = $('#class-student-input').val();
     $.post(
-        'http://localhost:3000/sqlite/student/add',
+        'http://localhost:3000/neo4j/student/add',
         {
             id: id_student,
             name: name_student,
@@ -125,7 +125,7 @@ function addStudent(){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/neo4j/error';
                 }
                 else{
                     $('#create-table').remove();
@@ -144,7 +144,7 @@ function updateStudent(id){
     var age_student = $('#age-student-input').val();
     var id_class = $('#class-student-input').val();
     $.post(
-        'http://localhost:3000/sqlite/student/update',
+        'http://localhost:3000/neo4j/student/update',
         {
             old_id: id,
             new_id: id_student,
@@ -155,7 +155,7 @@ function updateStudent(id){
         function(result, status){
             if(status == 'success'){
                 if(result == 'error'){
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/neo4j/error';
                 }
                 else{
                     $('#add-btn').removeAttr('disabled');
@@ -178,7 +178,7 @@ function updateStudent(id){
 
 function delStudent(field, id){
     $.post(
-        'http://localhost:3000/sqlite/student/delete',
+        'http://localhost:3000/neo4j/student/delete',
         {
             field: field,
             id: id
@@ -189,7 +189,7 @@ function delStudent(field, id){
                     $('#' + id).remove();
                 }
                 else{
-                    location.href = 'http://localhost:3000/sqlite/error';
+                    location.href = 'http://localhost:3000/neo4j/error';
                 }
             }
         },
