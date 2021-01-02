@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <meta charset="utf-8">
+        <title>Manage School</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    </header>
+    <body>
+        <div class="container text-center">
+            <h1>Manage School</h1>
+            <h2>SQLite</h2>
+        </div>
+        <div class="container text-center">
+            <button type="button" class="pointer" id="student-btn" style="font-size: large;">
+                Student
+            </button>
+            <button type="button" class="pointer" id="class-btn" style="margin-left: 20px; font-size: larger;">
+                Class
+            </button>
+            <button type="button" class="pointer" id="teacher-btn" style="margin-left: 20px; font-size: larger;">
+                Teacher
+            </button>
+            <button type="button" class="pointer" id="teaching-btn" style="margin-left: 20px; font-size: larger;">
+                Teaching
+            </button>
+        </div>
+        <script src="/public/js/jquery-3.5.1.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#student-btn').click(function(){
+                    location.href = 'http://localhost:3000/sqlite/school/student';
+                });
+                $('#class-btn').click(function(){
+                    location.href = 'http://localhost:3000/neo4j/school/class';
+                });
+                $('#teacher-btn').click(function(){
+                    location.href = 'http://localhost:3000/neo4j/school/teacher';
+                });
+                $('#teaching-btn').click(function(){
+                    location.href = 'http://localhost:3000/neo4j/school/teaching';
+                });
+            });
+        </script>
+    </body>
+</html>

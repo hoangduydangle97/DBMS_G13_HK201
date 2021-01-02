@@ -1,0 +1,28 @@
+<tr>
+    <th>Id</th>
+    <th>Name</th> 
+    <th>Update</th>
+    <th id="delete-title">Delete</th>
+</tr>
+<% if(classes.length != 0){
+    classes.forEach(function(row){ %> 
+<tr id="<%= row.id_class %>">
+    <th><%= row.id_class %></th>
+    <th><%= row.name_class %></th>
+    <th>
+        <button type="button" class="pointer update-btn" onclick="updateBtn('<%= row.id_student %>')">
+            &#9998;
+        </button>
+    </th>
+    <th>
+        <button type="button" class="pointer delete-btn" onclick="delClass('id_class', '<%= row.id_student %>')">
+            &times;
+        </button>
+    </th>
+</tr>
+<% }); }
+else{ %> 
+<tr>
+    <th colspan="6">Not found!</th>
+</tr>
+<% } %>

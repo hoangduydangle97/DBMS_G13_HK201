@@ -75,7 +75,7 @@ exports.sqlite3Update = function(dbName, table, values, callback){
     var fields = table.map(function(field){
         return field + ' = ?';
     }).join(', ');
-    var sql = 'UPDATE ' + tbName + ' SET ' + fields + ' WHERE id_student = ?;';
+    var sql = 'UPDATE ' + tbName + ' SET ' + fields + ' WHERE ' + table[0] + ' = ?;';
     db.run(sql, values, function(err){
         sqlite3Disconnect();
         if (err) {
@@ -83,7 +83,7 @@ exports.sqlite3Update = function(dbName, table, values, callback){
             callback(false);
         }
         else{
-            callback();
+            callback(true);
         } 
     });
 }
@@ -92,8 +92,8 @@ exports.sqlite3Delete = function(dbName, table, value, callback){
     sqlite3Connect(dbName);
     var tbName = table.pop();
     var field = table.pop();
-    var sql = 'DELETE FROM ' + tbName + ' WHERE ' + field + ' = ' + value + ';';
-    db.run(sql, [], function(err){
+    var sql = 'DELETE FROM ' + tbName + ' WHERE ' + field + ' = ?;';
+    db.run(sql, [value], function(err){
         sqlite3Disconnect();
         if (err) {
             console.error(err.message);

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <meta charset="utf-8">
+        <title>Manage School</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    </header>
+    <body>
+        <div class="container text-center">
+            <h1>Manage School</h1>
+            <h2><%= page == 'sqlite' ? 'SQLite' : 'Neo4j' %> </h2> 
+            <div>
+                <button type="button" class="pointer" id="home-btn" style="font-size: larger;">
+                    Home
+                </button>
+                <button type="button" class="pointer" id="class-btn" style="margin-left: 20px; font-size: larger;">
+                    Class
+                </button>
+                <button type="button" class="pointer" id="teacher-btn" style="margin-left: 20px; font-size: larger;">
+                    Teacher
+                </button>
+                <button type="button" class="pointer" id="teaching-btn" style="margin-left: 20px; font-size: larger;">
+                    Teaching
+                </button>
+            </div>
+        </div>
+        <div class="container">
+            <caption>
+                <h2 class="text-center">Student</h2>
+                <h4 class="text-center">
+                    <button type="button" class="pointer" id="add-btn">
+                        + Add
+                    </button>
+                    <input type="text" id="search-input" style="margin-left: 20px;" placeholder="Search ...">
+                </h4>
+            </caption>
+            <table class="center">
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th> 
+                  <th>Age</th>
+                  <th>Class</th>
+                  <th>Update</th>
+                  <th id="delete-title">Delete</th>
+                </tr>
+            <% students.forEach(function(row){ %> 
+                <tr id="<%= row.id_student %>">
+                    <th><%= row.id_student %></th>
+                    <th><%= row.name_student %></th> 
+                    <th><%= row.age_student %></th>
+                    <th><%= row.name_class %></th>
+                    <th>
+                        <button type="button" class="pointer update-btn" onclick="updateBtn('<%= row.id_student %>')">
+                            &#9998;
+                        </button>
+                    </th>
+                    <th>
+                        <button type="button" class="pointer delete-btn" onclick="delStudent('id_student', '<%= row.id_student %>')">
+                            &times;
+                        </button>
+                    </th>
+                </tr>
+            <% }); %> 
+            </table>
+        </div>
+    <script src="/public/js/jquery-3.5.1.min.js"></script>
+    <script src="/public/js/<%= page %>/student.js"></script>
+    </body>
+</html>

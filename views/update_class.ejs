@@ -1,0 +1,14 @@
+<tr id="<%= row.id_class %>">
+    <th><input type="text" id="id-class-input" value="<%= row.id_class %>"></th>
+    <th><input type="text" id="name-class-input" value="<%= row.name_class %>"></th> 
+    <th>
+        <button type="button" class="pointer" onclick="updateClass('<%= row.id_class %>')">
+            &#10004;
+        </button>
+    </th>
+    <th>
+        <button type="button" class="pointer" onclick="cancelBtn('<%= row.id_class %>')">
+            &times;
+        </button>
+    </th>
+</tr>
